@@ -3,6 +3,8 @@ Pipeline Snowflake for IST class
 
 # Get Started
 
+⚠️ This Makefile doesn't work on Windows ⚠️
+
 1. Clone the repository
 ```bash
 git clone git@github.com:lei-rth/IST-Project-Snowflake.git

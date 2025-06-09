@@ -19,3 +19,7 @@ download:
 	@echo "Downloading data..."
 	@if [ ! -d data ]; then mkdir data ; fi
 	venv/bin/python get_data.py
+
+upload:
+	@echo "Uploading data..."
+	venv/bin/python upload_data.py

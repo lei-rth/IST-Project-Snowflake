@@ -65,10 +65,12 @@ def upload_data_to_snowflake():
         cursor = conn.cursor()
 
         # Create the table that contains the flight data if it doesn't exist
-        cursor.execute(create_table_if_not_exists('flight_data', 'data/flight_data.csv'))
+        flight_data_table_name = 'flight_data'
+        cursor.execute(create_table_if_not_exists(flight_data_table_name, 'data/flight_data.csv'))
 
         # Create the table that contains the flights from Zurich if it doesn't exist
-        cursor.execute(create_table_if_not_exists('flights_from_zurich', 'data/flights_from_zurich.csv'))
+        flights_from_zurich_table_name = 'flights_from_zurich'
+        cursor.execute(create_table_if_not_exists(flights_from_zurich_table_name, 'data/flights_from_zurich.csv'))
 
         # Upload the dataset to Snowflake
         flight_data_put_command = f"PUT file://data/flight_data.csv @{SNOWFLAKE_STAGE} OVERWRITE = TRUE;"
@@ -81,12 +83,12 @@ def upload_data_to_snowflake():
         print(f"Flights from Zurich data uploaded to stage: {SNOWFLAKE_STAGE}")
 
         # Load into table
-        load_into_table(cursor, f"{SNOWFLAKE_SCHEMA}.flight_data", 'data/flight_data.csv', SNOWFLAKE_STAGE)
-        print(f"Flight data copied into table: {SNOWFLAKE_SCHEMA}.flight_data")
+        load_into_table(cursor, f"{SNOWFLAKE_SCHEMA}.{flight_data_table_name}", 'data/flight_data.csv', SNOWFLAKE_STAGE)
+        print(f"Flight data copied into table: {SNOWFLAKE_SCHEMA}.{flight_data_table_name}")
 
         # Load flights from Zurich into table
-        load_into_table(cursor, f"{SNOWFLAKE_SCHEMA}.flights_from_zurich", 'data/flights_from_zurich.csv', SNOWFLAKE_STAGE)
-        print(f"Flights from Zurich data copied into table: {SNOWFLAKE_SCHEMA}.flights_from_zurich")
+        load_into_table(cursor, f"{SNOWFLAKE_SCHEMA}.{flights_from_zurich_table_name}", 'data/flights_from_zurich.csv', SNOWFLAKE_STAGE)
+        print(f"Flights from Zurich data copied into table: {SNOWFLAKE_SCHEMA}.{flights_from_zurich_table_name}")
 
         conn.commit()
     except Exception as e:

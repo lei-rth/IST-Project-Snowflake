@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS "flight_data" (
-    "id" INT AUTOINCREMENT PRIMARY KEY,
-    "json_data" VARIANT,
-    "timestamp" TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-);

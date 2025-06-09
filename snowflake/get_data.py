@@ -35,7 +35,6 @@ def get_flights_from_zurich():
         }
         data.append(flight_dict)
 
-    # Create a pandas DataFrame
     df = pd.DataFrame(data)
     df.to_csv('data/flights_from_zurich.csv', index=False)
     return df

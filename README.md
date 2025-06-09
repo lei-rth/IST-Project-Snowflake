@@ -1,8 +1,8 @@
 # IST Project - Data Pipeline 
 
 ***Students :***
- - Bouzourène Ryad
  - Barros Fernandes Gabriel
+ - Bouzourène Ryad
  - Nguyen Thomas
  - Rothenbühler Lei
 
@@ -31,6 +31,10 @@ Snowflake provides a fully managed infrastructure, eliminating the need for manu
 Snowflake adopted the pay-as-you-go plan, which is mean that you only pay for the compute and storage ressources used, avoiding unecessary costs. Additionally, data compression and deduplication minimize storage expenses, further improving cost efficiency compared to traditional data warehouses.
 
 ## How to get started
+
+Requirements :
+- Python 3.10 or higher
+- Makefile
 
 ⚠️ _Note: This setup uses a Makefile and works best on Unix/Linux systems._
 
@@ -98,19 +102,7 @@ CREATE TABLE flight_data (
     icao24 STRING,
     callsign STRING,
     origin_country STRING,
-    time_position BIGINT,
-    latitude FLOAT,
-    longitude FLOAT,
-    baro_altitude FLOAT,
-    on_ground BOOLEAN,
-    velocity FLOAT,
-    true_track FLOAT,
-    vertical_rate FLOAT,
-    sensors ARRAY,
-    squawk STRING,
-    geo_altitude FLOAT,
-    last_contact BIGINT,
-    category INTEGER
+    ...
 );
 ```
 
@@ -162,7 +154,9 @@ FILE_FORMAT = (TYPE = CSV FIELD_OPTIONALLY_ENCLOSED_BY = '"' COMPRESSION = NONE)
 HEADER = TRUE
 OVERWRITE = TRUE;
 ```
-
+<br>
+<br>
+<br>
 
 ## Resources
 

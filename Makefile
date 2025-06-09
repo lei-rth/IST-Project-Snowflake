@@ -18,4 +18,4 @@ install:
 download:
 	@echo "Downloading data..."
 	@if [ ! -d data ]; then mkdir data ; fi
-	venv/bin/python python/get_data.py > data/flight_data.json
+	venv/bin/python get_data.py
